@@ -13,16 +13,17 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="weather-wrap">
         <div class="weather-border">
           <div class="overview">
-          <h1>New York</h1>
-          <ul class="current-info">
+          <h1 id="city"></h1>
+          <ul class="current-info current">
             <li>Friday 05:00</li>
-            <li>clear</li>
+            <li id="description"></li>
           </ul>
           </div>
           <div class="row row-cols-2">
@@ -34,15 +35,17 @@
                 alt="partly cloudy" class="float-left"
               />
               <div class="float-left">
-              <strong>12</strong><span class="units">°C|<a href="">°F</a></span> 
+              <strong id="temperature"></strong><span class="units">°C|<a href="">°F</a></span> 
               </div>
               </div>
             </div>
             <div class="col">
               <ul class="current-info">
-                <li>Precipitation: 0 %</li>
-                <li>Humidity: 73 %</li>
-                <li>Wind: 2 km/h</li>
+                <li>Humidity: 
+                  <span id="humidity"></span> %
+                </li>
+                <li>Wind: <span id="wind"> </span>
+                   km/h</li>
               </ul>
             </div>
           </div>
