@@ -31,17 +31,22 @@ function showTemp(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt*1000);
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`); 
-
-  
+iconElement.setAttribute("alt", response.data.weather[0].description)
 }
 
+function search(city) {
+  let apiKey = "0c669309e9b69198d164920a0d742074";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(showTemp);
+} 
 
+function definecity(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value)
+} 
+search("New York");
 
-
-let apiKey = "0c669309e9b69198d164920a0d742074"; 
-let city = "Paris"
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-
-axios.get(url).then(showTemp);
-
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", definecity);
 
